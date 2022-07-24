@@ -3,17 +3,23 @@ import React, { useEffect, useState, useRef } from "react";
 import "./css/circle.css";
 
 const Circle = (props) => {
-  const [offset, setOffset] = useState(0);
+  let [offset, setOffset] = useState(0);
   const { size, progress, strokeWidth, circleOneColor, circleTwoColor } = props;
   const center = size / 2;
   const radius = size / 2 - strokeWidth / 2;
   const circumfrerence = 2 * Math.PI * radius;
   useEffect(() => {
-    const progressOffset = ((100 - progress) / 100) * circumfrerence;
+    let progressOffset = ((100 - progress) / 100) * circumfrerence;
     setOffset(progressOffset);
+    console.log("Loaded");
   }, [progress, circumfrerence, setOffset, offset]);
+
+  const click = (e) => {
+    console.log("Click");
+    props.newProgress(props.progress + 5);
+  };
   return (
-    <div>
+    <div onClick={click}>
       {/*
 
     https://www.w3schools.com/html/html5_svg.asp
