@@ -1,7 +1,7 @@
-import logo from "./logo.svg";
 import "./App.css";
 import Circle from "./Content/Circle";
 import React, { useEffect, useState, useRef } from "react";
+import Timer from "./Content/Timer";
 
 function App() {
   let [progress, newProgress] = useState(10);

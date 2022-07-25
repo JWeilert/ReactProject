@@ -1,8 +1,11 @@
-import App from "../App";
 import React, { useEffect, useState, useRef } from "react";
 import "./css/circle.css";
+import Timer from "./Timer";
 
 const Circle = (props) => {
+  {
+    /*For Drawling Circle */
+  }
   let [offset, setOffset] = useState(0);
   const { size, progress, strokeWidth, circleOneColor, circleTwoColor } = props;
   const center = size / 2;
@@ -16,7 +19,7 @@ const Circle = (props) => {
 
   const click = (e) => {
     console.log("Click");
-    props.newProgress(props.progress + 5);
+    props.newProgress(props.progress + 0.5);
   };
   return (
     <div onClick={click}>
@@ -52,6 +55,7 @@ const Circle = (props) => {
           {progress}%
         </text>
       </svg>
+      <Timer progressOffset={props.progressOffset} progress={props.progress} />
     </div>
   );
 };
