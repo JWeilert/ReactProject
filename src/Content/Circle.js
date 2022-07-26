@@ -22,7 +22,7 @@ const Circle = (props) => {
     props.newProgress(props.progress + 0.5);
   };
   return (
-    <div onClick={click}>
+    <div>
       {/*
 
     https://www.w3schools.com/html/html5_svg.asp
@@ -55,7 +55,7 @@ const Circle = (props) => {
           {progress}%
         </text>
       </svg>
-      <Timer progressOffset={props.progressOffset} progress={props.progress} />
+      <Timer progress={props.progress} newProgress={props.newProgress} />
     </div>
   );
 };

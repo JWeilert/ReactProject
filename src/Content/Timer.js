@@ -2,15 +2,20 @@ import React, { useState, useEffect } from "react";
 import "./css/timer.css";
 
 const Timer = (props) => {
-  const startTime = 90;
+  const startTime = 5;
   let [time, totalTime] = useState(startTime);
-  let [minutes, minutesSet] = useState(0);
-  let [seconds, secondsSet] = useState(0);
+  let [minute, minuteSet] = useState(0);
+  let [second, secondSet] = useState(0);
   var timer;
+  var eclipsedTime = 0;
+  {
+    /* CountDown */
+  }
   function countdown() {
-    var seconds = 0;
     timer = setInterval(() => {
-      seconds++;
+      props.newProgress((eclipsedTime / startTime) * 100);
+      eclipsedTime++;
+      console.log(eclipsedTime);
       time--;
       totalTime(time);
     }, 1000);
@@ -18,17 +23,16 @@ const Timer = (props) => {
   function pause() {
     clearInterval(timer);
   }
-  countdown();
   useEffect(() => {
-    minutesSet(Math.floor(time / 60));
-    secondsSet(Math.floor(time % 60));
-  }, [minutes, seconds, time]);
+    minuteSet(Math.floor(time / 60));
+    secondSet(Math.floor(time % 60));
+  }, [minute, second, time]);
   return (
     <div>
       <div id="timer">
-        {minutes}:{seconds}
+        {minute}:{second}
       </div>
-      <button onClick={pause}>Pause</button>
+      <button onClick={countdown}>Pause</button>
     </div>
   );
 };
