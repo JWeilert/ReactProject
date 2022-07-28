@@ -2,37 +2,56 @@ import React, { useState, useEffect } from "react";
 import "./css/timer.css";
 
 const Timer = (props) => {
-  const startTime = 5;
+  var timer;
+  const startTime = 10;
   let [time, totalTime] = useState(startTime);
   let [minute, minuteSet] = useState(0);
   let [second, secondSet] = useState(0);
-  var timer;
-  var eclipsedTime = 0;
+  let [start, timeStart] = useState(false);
+  let [eclipsedTime, timeEclipsed] = useState(0);
   {
     /* CountDown */
   }
-  function countdown() {
+
+  useEffect(() => {
+    if (start) {
+      console.log(start);
+      startTimer();
+    }
+    return () => (clearInterval(timer), console.log("test"));
+  }, [start]);
+
+  const startTimer = () => {
     timer = setInterval(() => {
-      props.newProgress((eclipsedTime / startTime) * 100);
-      eclipsedTime++;
+      timeEclipsed(eclipsedTime++);
       console.log(eclipsedTime);
       time--;
+      props.newProgress((eclipsedTime / startTime) * 100);
+      console.log("HI");
       totalTime(time);
     }, 1000);
-  }
-  function pause() {
-    clearInterval(timer);
-  }
+  };
+
+  const change = () => {
+    timeStart(!start);
+    console.log(start);
+  };
+
   useEffect(() => {
     minuteSet(Math.floor(time / 60));
     secondSet(Math.floor(time % 60));
-  }, [minute, second, time]);
+  }, [minute, second, time, start]);
+
+  {
+    /* Returning */
+  }
+
   return (
     <div>
       <div id="timer">
         {minute}:{second}
       </div>
-      <button onClick={countdown}>Pause</button>
+      <button onClick={change}>Start/Stop</button>
     </div>
   );
 };

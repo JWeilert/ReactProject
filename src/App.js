@@ -4,7 +4,7 @@ import React, { useEffect, useState, useRef } from "react";
 import Timer from "./Content/Timer";
 
 function App() {
-  let [progress, newProgress] = useState(10);
+  let [progress, newProgress] = useState(0);
   const state = {
     size: 250,
     strokeWidth: 15,

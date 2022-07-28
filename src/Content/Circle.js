@@ -17,10 +17,6 @@ const Circle = (props) => {
     console.log("Loaded");
   }, [progress, circumfrerence, setOffset, offset]);
 
-  const click = (e) => {
-    console.log("Click");
-    props.newProgress(props.progress + 0.5);
-  };
   return (
     <div>
       {/*
