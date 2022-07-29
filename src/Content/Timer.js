@@ -15,7 +15,6 @@ const Timer = (props) => {
 
   useEffect(() => {
     if (start) {
-      console.log(start);
       startTimer();
     }
     return () => (clearInterval(timer), console.log("test"));
@@ -23,13 +22,13 @@ const Timer = (props) => {
 
   const startTimer = () => {
     timer = setInterval(() => {
-      timeEclipsed(eclipsedTime++);
-      console.log(eclipsedTime);
-      time--;
-      props.newProgress((eclipsedTime / startTime) * 100);
-      console.log("HI");
+      eclipsedTime += 0.5;
+      time -= 0.5;
+      timeEclipsed(eclipsedTime);
       totalTime(time);
-    }, 1000);
+      console.log(eclipsedTime);
+      props.newProgress((eclipsedTime / startTime) * 100);
+    }, 500);
   };
 
   const change = () => {

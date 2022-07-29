@@ -15,7 +15,7 @@ const Circle = (props) => {
     let progressOffset = ((100 - progress) / 100) * circumfrerence;
     setOffset(progressOffset);
     console.log("Loaded");
-  }, [progress, circumfrerence, setOffset, offset]);
+  }, [progress, circumfrerence]);
 
   return (
     <div>
@@ -38,7 +38,7 @@ const Circle = (props) => {
           strokeWidth={strokeWidth}
         ></circle>
         <circle
-          className="circle"
+          className="circleSmall"
           stroke={circleTwoColor}
           cx={center}
           cy={center}

@@ -8,8 +8,8 @@ function App() {
   const state = {
     size: 250,
     strokeWidth: 15,
-    circleOneColor: "red",
-    circleTwoColor: "blue",
+    circleOneColor: "#800080",
+    circleTwoColor: "#800080",
   };
 
   return (

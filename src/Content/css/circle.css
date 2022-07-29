@@ -6,10 +6,11 @@
 }
 
 .circleBig{
-    fill:none
+    fill:none;
+    opacity: 0.5;
 }
 
-.circle{
+.circleSmall{
     fill: none;
 }
 
