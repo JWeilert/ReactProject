@@ -7,6 +7,7 @@ const Circle = (props) => {
     /*For Drawling Circle */
   }
   let [offset, setOffset] = useState(0);
+  let [start, timeStart] = useState(false);
   const { size, progress, strokeWidth, circleOneColor, circleTwoColor } = props;
   const center = size / 2;
   const radius = size / 2 - strokeWidth / 2;
@@ -16,7 +17,10 @@ const Circle = (props) => {
     setOffset(progressOffset);
     console.log("Loaded");
   }, [progress, circumfrerence]);
-
+  const change = () => {
+    timeStart(!start);
+    console.log(start);
+  };
   return (
     <div>
       {/*
@@ -28,7 +32,7 @@ const Circle = (props) => {
     //pathLength = total lenght of circles circumfrance
 
     */}
-      <svg className="circleChart" width={size} height={size}>
+      <svg onClick={change} className="circleChart" width={size} height={size}>
         <circle
           className="circleBig"
           stroke={circleOneColor}
@@ -48,10 +52,14 @@ const Circle = (props) => {
           strokeDashoffset={offset}
         ></circle>
         <text x={center} y={center} className="percentage">
-          {progress}%
+          {progress.toFixed(1)}%
         </text>
       </svg>
-      <Timer progress={props.progress} newProgress={props.newProgress} />
+      <Timer
+        progress={props.progress}
+        newProgress={props.newProgress}
+        start={start}
+      />
     </div>
   );
 };
